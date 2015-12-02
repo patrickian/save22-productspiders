@@ -16,7 +16,7 @@ class WwwAllForYouSg(scrapy.Spider):
 
     def parse_subcategories(self, response):
         #print "+++++++++++++++++++++++++++++++"
-        #print response
+        #print response 
         for x in response.css("div.FeaturedHeader > h2 > a::attr('href')"):
             url = response.urljoin(x.extract())
             #print url
