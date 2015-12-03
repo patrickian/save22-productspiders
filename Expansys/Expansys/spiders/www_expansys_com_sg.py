@@ -15,4 +15,11 @@ class WwwExpansysComSg(CrawlSpider):
       )
     #, deny =(''))
     def parse_categories(self,response):
-        pass
+        l = ItemLoader(item=ExpansysItem(), response=response)
+        print '----------------------------------------------------'
+        print response
+        l.add_xpath('_name', '//div[@id="product"]//h1[@itemprop="name"]/text()')
+        #l.add_xpath('price', '//p[@id="price"]')
+        #l.add_css('stock', 'p#stock]')
+        #l.add_value('last_updated', 'today') # you can also use literal values
+        return l.load_item()
